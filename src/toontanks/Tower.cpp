@@ -1,10 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tower.h"
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
-
 
 void ATower::Tick(float DeltaTime)
 {

@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -13,8 +12,6 @@ ATank::ATank()
     Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Comp"));
     Camera->SetupAttachment(SpringArm);
 }
-
-// Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
@@ -40,7 +37,6 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
     PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
     PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
-
     PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
 }
 
@@ -50,7 +46,6 @@ void ATank::Move(float value)
     DeltaLocation.X = value * GetWorld()->GetDeltaSeconds() * Speed;
 	AddActorLocalOffset(DeltaLocation, true);
 }
-
 
 void ATank::Turn(float value)
 {
