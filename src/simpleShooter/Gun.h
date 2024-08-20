@@ -43,4 +43,8 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float MaxRifleDamage = 10;
+
+	bool GunTrace(FHitResult& Hit, FVector& ShootDirection);   // это не константная ссылка, мы знаем, что это выходной параметр.
+
+	AController* GetOwnerController()const;  // const - он не предназначен для изменения каких-либо переменных в нашем классе оружия.
 };
