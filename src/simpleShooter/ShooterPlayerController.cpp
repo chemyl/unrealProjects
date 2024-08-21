@@ -6,9 +6,21 @@
 #include "Blueprint/UserWidget.h"
 
 
+void AShooterPlayerController::BeginPlay()
+{
+    Super::BeginPlay();
+    HUDWidget = CreateWidget(this, HUDClass);
+    if (HUDWidget != nullptr)
+    {
+        HUDWidget->AddToViewport();
+    }
+}
+
 void AShooterPlayerController::GameHasEnded(class AActor* EndGameFocus, bool bIsWinner)
 {
     Super::GameHasEnded(EndGameFocus, bIsWinner);
+
+    HUDWidget->RemoveFromViewport();
     if (bIsWinner)
     {
         UUserWidget* WinScreenWidget = CreateWidget(this, WinScreenClass);
@@ -28,3 +40,4 @@ void AShooterPlayerController::GameHasEnded(class AActor* EndGameFocus, bool bIs
 
     GetWorldTimerManager().SetTimer(RestartTimer, this, &APlayerController::RestartLevel, RestartDelay);
 }
+
